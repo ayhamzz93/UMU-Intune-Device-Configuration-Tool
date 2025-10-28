@@ -35,7 +35,7 @@ $global:ScriptTitle = "Intune Device Configuration Tool - GUI"
 
 # Create the main form
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "Intune Device Configuration Tool"
+$form.Text = "Intune Device Configuration"
 $form.Size = New-Object System.Drawing.Size(500, 650)
 $form.StartPosition = "CenterScreen"
 $form.FormBorderStyle = "FixedDialog"
@@ -51,7 +51,7 @@ $logoPictureBox.SizeMode = "StretchImage"
 $logoPictureBox.BackColor = [System.Drawing.Color]::Transparent
 
 # Try to load logo image from GitHub or create placeholder
-$logoUrl = "https://raw.githubusercontent.com/ayhamzz93/UMU-Intune-Device-Configuration-Tool/main/UMU.png"  # Replace with your GitHub logo URL
+$logoUrl = "https://raw.githubusercontent.com/ayhamzz93/UMU-Intune-Device-Configuration-Tool/main/UMU.png"  # GitHub raw URL for logo
 try {
     # Try to download logo from GitHub
     $webClient = New-Object System.Net.WebClient
@@ -61,9 +61,9 @@ try {
 }
 catch {
     # If logo fails to load from GitHub, create a professional placeholder
-    $logoPictureBox.BackColor = [System.Drawing.Color]::FromArgb(0, 120, 215)
+    $logoPictureBox.BackColor = [System.Drawing.Color]::FromArgb(0, 102, 153)  # Professional Blue #006699
     $logoLabel = New-Object System.Windows.Forms.Label
-    $logoLabel.Text = "IT"
+    $logoLabel.Text = "UMU"
     $logoLabel.ForeColor = [System.Drawing.Color]::White
     $logoLabel.Font = New-Object System.Drawing.Font("Segoe UI", 20, [System.Drawing.FontStyle]::Bold)
     $logoLabel.TextAlign = "MiddleCenter"
@@ -74,9 +74,9 @@ $form.Controls.Add($logoPictureBox)
 
 # Title Label (moved to accommodate logo)
 $titleLabel = New-Object System.Windows.Forms.Label
-$titleLabel.Text = "Intune Device Configuration Tool"
-$titleLabel.Font = New-Object System.Drawing.Font("Segoe UI", 16, [System.Drawing.FontStyle]::Bold)
-$titleLabel.ForeColor = [System.Drawing.Color]::FromArgb(0, 120, 215)
+$titleLabel.Text = "Intune Device Configuration-UMU"
+$titleLabel.Font = New-Object System.Drawing.Font("Segoe UI", 15, [System.Drawing.FontStyle]::Bold)
+$titleLabel.ForeColor = [System.Drawing.Color]::FromArgb(0, 102, 153)  # Professional Blue #006699
 $titleLabel.Size = New-Object System.Drawing.Size(350, 40)
 $titleLabel.Location = New-Object System.Drawing.Point(120, 30)
 $titleLabel.TextAlign = "MiddleLeft"
@@ -88,7 +88,7 @@ $subtitleLabel.Text = "Configure devices for Microsoft Intune - v$global:ScriptV
 $subtitleLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9)
 $subtitleLabel.ForeColor = [System.Drawing.Color]::Gray
 $subtitleLabel.Size = New-Object System.Drawing.Size(350, 20)
-$subtitleLabel.Location = New-Object System.Drawing.Point(120, 60)
+$subtitleLabel.Location = New-Object System.Drawing.Point(120, 70)
 $subtitleLabel.TextAlign = "MiddleLeft"
 $form.Controls.Add($subtitleLabel)
 
@@ -224,7 +224,7 @@ $statusLabel.Text = "Ready to start..."
 $statusLabel.Location = New-Object System.Drawing.Point(20, 50)
 $statusLabel.Size = New-Object System.Drawing.Size(410, 20)
 $statusLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9)
-$statusLabel.ForeColor = [System.Drawing.Color]::FromArgb(0, 120, 215)
+$statusLabel.ForeColor = [System.Drawing.Color]::FromArgb(0, 102, 153)  # Professional Blue #006699
 $progressGroupBox.Controls.Add($statusLabel)
 
 $jobIdLabel = New-Object System.Windows.Forms.Label
@@ -240,7 +240,7 @@ $executeButton = New-Object System.Windows.Forms.Button
 $executeButton.Text = "Execute Configuration"
 $executeButton.Size = New-Object System.Drawing.Size(150, 35)
 $executeButton.Location = New-Object System.Drawing.Point(200, 545)
-$executeButton.BackColor = [System.Drawing.Color]::FromArgb(0, 120, 215)
+$executeButton.BackColor = [System.Drawing.Color]::FromArgb(0, 102, 153)  # Professional Blue #006699
 $executeButton.ForeColor = [System.Drawing.Color]::White
 $executeButton.FlatStyle = "Flat"
 $executeButton.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
@@ -429,5 +429,4 @@ function ExecuteMainScript {
 }
 
 # Show the form
-
 $form.ShowDialog()
