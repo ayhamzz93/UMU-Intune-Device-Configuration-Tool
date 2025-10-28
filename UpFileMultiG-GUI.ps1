@@ -5,7 +5,7 @@
 # Check if running as Administrator
 if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Warning "This script requires Administrator privileges. Attempting to restart as Administrator..."
-    Start-Process PowerShell -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"iex (irm 'YOUR_GITHUB_RAW_URL_HERE')`""
+    Start-Process PowerShell -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"iex (irm 'https://raw.githubusercontent.com/ayhamzz93/UMU-Intune-Device-Configuration-Tool/refs/heads/main/UpFileMultiG-GUI.ps1')`""
     exit
 }
 
@@ -51,7 +51,7 @@ $logoPictureBox.SizeMode = "StretchImage"
 $logoPictureBox.BackColor = [System.Drawing.Color]::Transparent
 
 # Try to load logo image from GitHub or create placeholder
-$logoUrl = "https://raw.githubusercontent.com/yourusername/yourrepo/main/logo.png"  # Replace with your GitHub logo URL
+$logoUrl = "https://raw.githubusercontent.com/ayhamzz93/UMU-Intune-Device-Configuration-Tool/main/UMU.png"  # Replace with your GitHub logo URL
 try {
     # Try to download logo from GitHub
     $webClient = New-Object System.Net.WebClient
@@ -429,4 +429,5 @@ function ExecuteMainScript {
 }
 
 # Show the form
+
 $form.ShowDialog()
