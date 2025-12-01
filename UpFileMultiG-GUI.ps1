@@ -143,7 +143,6 @@ $userTextBox.Location = New-Object System.Drawing.Point(130, 28)
 $userTextBox.Size = New-Object System.Drawing.Size(200, 20)
 $userTextBox.Font = New-Object System.Drawing.Font("Segoe UI", 9)
 $userTextBox.Enabled = $false
-$userTextBox.PlaceholderText = "username@ad.umu.se"
 $configGroupBox.Controls.Add($userTextBox)
 
 $userLabel = New-Object System.Windows.Forms.Label
@@ -167,7 +166,6 @@ $groupTagTextBox.Location = New-Object System.Drawing.Point(130, 78)
 $groupTagTextBox.Size = New-Object System.Drawing.Size(200, 20)
 $groupTagTextBox.Font = New-Object System.Drawing.Font("Segoe UI", 9)
 $groupTagTextBox.Enabled = $false
-$groupTagTextBox.PlaceholderText = "Profile name from ITS"
 $configGroupBox.Controls.Add($groupTagTextBox)
 
 $groupTagLabel = New-Object System.Windows.Forms.Label
@@ -193,7 +191,6 @@ $computerNameTextBox.Size = New-Object System.Drawing.Size(200, 20)
 $computerNameTextBox.Font = New-Object System.Drawing.Font("Segoe UI", 9)
 $computerNameTextBox.Enabled = $false
 $computerNameTextBox.Visible = $false
-$computerNameTextBox.PlaceholderText = "Computer name"
 $configGroupBox.Controls.Add($computerNameTextBox)
 
 $computerNameLabel = New-Object System.Windows.Forms.Label
