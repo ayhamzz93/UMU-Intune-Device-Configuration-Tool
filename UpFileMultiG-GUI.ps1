@@ -25,7 +25,7 @@ catch {
 
 # Global variables
 $global:Action = ""
-$global:assignedUser = $null
+$global:assignedUser = $null                     
 $global:GroupTag = $null
 $global:ComputerName = $null
 
@@ -235,18 +235,28 @@ $progressGroupBox.Controls.Add($jobIdLabel)
 # Buttons
 $executeButton = New-Object System.Windows.Forms.Button
 $executeButton.Text = "Execute Configuration"
-$executeButton.Size = New-Object System.Drawing.Size(150, 35)
-$executeButton.Location = New-Object System.Drawing.Point(200, 545)
+$executeButton.Size = New-Object System.Drawing.Size(130, 35)
+$executeButton.Location = New-Object System.Drawing.Point(70, 545)
 $executeButton.BackColor = [System.Drawing.Color]::FromArgb(0, 102, 153)  # Professional Blue #006699
 $executeButton.ForeColor = [System.Drawing.Color]::White
 $executeButton.FlatStyle = "Flat"
 $executeButton.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
 $form.Controls.Add($executeButton)
 
+$shutdownButton = New-Object System.Windows.Forms.Button
+$shutdownButton.Text = "Shutdown Computer"
+$shutdownButton.Size = New-Object System.Drawing.Size(130, 35)
+$shutdownButton.Location = New-Object System.Drawing.Point(210, 545)
+$shutdownButton.BackColor = [System.Drawing.Color]::FromArgb(180, 50, 50)
+$shutdownButton.ForeColor = [System.Drawing.Color]::White
+$shutdownButton.FlatStyle = "Flat"
+$shutdownButton.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Bold)
+$form.Controls.Add($shutdownButton)
+
 $cancelButton = New-Object System.Windows.Forms.Button
-$cancelButton.Text = "Cancel"
-$cancelButton.Size = New-Object System.Drawing.Size(100, 35)
-$cancelButton.Location = New-Object System.Drawing.Point(375, 545)
+$cancelButton.Text = "Close"
+$cancelButton.Size = New-Object System.Drawing.Size(80, 35)
+$cancelButton.Location = New-Object System.Drawing.Point(350, 545)
 $cancelButton.BackColor = [System.Drawing.Color]::FromArgb(220, 220, 220)
 $cancelButton.ForeColor = [System.Drawing.Color]::Black
 $cancelButton.FlatStyle = "Flat"
@@ -297,6 +307,15 @@ $editRadio.Add_CheckedChanged({
 
 $cancelButton.Add_Click({
     $form.Close()
+})
+
+$shutdownButton.Add_Click({
+    $result = [System.Windows.Forms.MessageBox]::Show("Are you sure you want to shutdown this computer?", "Shutdown Confirmation", "YesNo", "Warning")
+    if ($result -eq "Yes") {
+        [System.Windows.Forms.MessageBox]::Show("Computer will shutdown in 10 seconds. Save your work now!", "Shutdown Warning", "OK", "Warning")
+        Start-Process "shutdown" -ArgumentList "/s /t 10" -WindowStyle Hidden
+        $form.Close()
+    }
 })
 
 $executeButton.Add_Click({
